@@ -53,11 +53,16 @@ public class Pizza{
         
         if (pack)
             bill+="Paperbag Added: "+(count*pacKageprice)+"\n";
-        bill+="Total Price: "+this.getPrice()+"\n";
+        bill+="Total Price: "+this.getPriceCount()+"\n";
         return bill;
     }
 
     public int getPrice(){
+        System.out.print("Base Price Of The Pizza: ");
+        return price;
+    }
+
+    public int getPriceCount(){
         if(sos)
             price+=sosPrice;
         if (topping)
