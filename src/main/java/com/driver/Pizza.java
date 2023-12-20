@@ -1,77 +1,68 @@
 package com.driver;
 
-public class Pizza {
-    private boolean addCheese,addTapimg,addTakeAway,isVeg;
-    private int price;
-    private int cheesePrice;
-    private int takeAwayPrice;
-    private int toppingPrice;
+public class Pizza{
+    private int price,pacKageprice,sosPrice,toppingPrice,count;
+    private boolean isVej,pack,sos,topping;
     private String bill;
-
-    public Pizza(Boolean isVeg){
-        this.isVeg = isVeg;
-        // your code goes here
-        if(isVeg){
+     boolean isdeal;
+    Pizza(){};
+    Pizza(boolean isVej){
+        System.out.println("constructor called");
+        price=0;
+        count=0;
+        isdeal=false;pack=false;sos=false;topping=false;
+        bill="";
+        this.isVej=isVej;
+        if(isVej==true){
             price=300;
-            cheesePrice=80;
+            pacKageprice=20;
+            sosPrice=80;
             toppingPrice=70;
-            takeAwayPrice=20;
-        }  
-        else{
+        }else{
             price=400;
-            cheesePrice=80;
+            pacKageprice=20;
+            sosPrice=80;
             toppingPrice=120;
-            takeAwayPrice=20;
         }
-           
     }
 
-    public int getPrice(){
-
-        int ans=this.price;
-        if(addCheese)
-            ans+=cheesePrice;
-
-        if(addTapimg)
-            ans+=toppingPrice;
-
-        if(addTakeAway)
-            ans+=takeAwayPrice;
-
-        return ans;
-
+    void addTakeaway(){
+        count++;
+        pack=true;
     }
 
-    public void addExtraCheese(){
-        // your code goes here
-                addCheese=true;
-               
+    void addExtraCheese(){
+        sos=true;
     }
 
-    public void addExtraToppings(){
-        // your code goes here
-        addTapimg=true;
+    void addExtraToppings(){
+        topping=true;
     }
 
-    public void addTakeaway(){
-       addTakeAway=true;
+    public void delPizzaCall(){
+        sos=true;
+        topping=true;
     }
 
     public String getBill(){
-        bill="Base Price Of The Pizza: "+price +"/n";
-        if(addCheese){
-           bill+= "Extra Cheese Added: "+cheesePrice +"/n";
-        }
-
-        if(addTapimg){
-           bill+= "Extra Toppings Added: "+toppingPrice +"/n";
-        }
-
-         if(addTakeAway){
-           bill+= "Paper bag Price: "+takeAwayPrice +"/n";
-        }
-        bill+= "Total Price: "+getPrice();
+        if(sos)
+            bill+="sos price: "+sosPrice+"\n";
+        if (topping)
+            bill+="topping price: "+toppingPrice+"\n";
+        
+        if (pack)
+            bill+="pack price : "+(count*pacKageprice)+"\n";
+        bill+="Total price : "+this.countPrice()+"\n";
         return bill;
     }
-}
 
+    public int countPrice(){
+        if(sos)
+            price+=sosPrice;
+        if (topping)
+            price+=toppingPrice;
+        if (pack)
+            price+=(count*pacKageprice);
+        return price;
+    }
+}
