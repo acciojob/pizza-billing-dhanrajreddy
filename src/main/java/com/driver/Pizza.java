@@ -52,11 +52,11 @@ public class Pizza{
         
         if (pack)
             bill+="pack price : "+(count*pacKageprice)+"\n";
-        bill+="Total price : "+this.countPrice()+"\n";
+        bill+="Total price : "+this.getPrice()+"\n";
         return bill;
     }
 
-    public int countPrice(){
+    public int getPrice(){
         if(sos)
             price+=sosPrice;
         if (topping)
