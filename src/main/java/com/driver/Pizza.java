@@ -5,8 +5,8 @@ public class Pizza{
     private boolean isVej,pack,sos,topping;
     private String bill;
      boolean isdeal;
-    Pizza(){};
-    Pizza(boolean isVej){
+
+    public Pizza(boolean isVej){
         System.out.println("constructor called");
         price=0;
         count=0;
@@ -26,16 +26,16 @@ public class Pizza{
         }
     }
 
-    void addTakeaway(){
+    public void addTakeaway(){
         count++;
         pack=true;
     }
 
-    void addExtraCheese(){
+    public void addExtraCheese(){
         sos=true;
     }
 
-    void addExtraToppings(){
+    public void addExtraToppings(){
         topping=true;
     }
 
