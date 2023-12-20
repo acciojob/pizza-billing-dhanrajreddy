@@ -45,14 +45,15 @@ public class Pizza{
     }
 
     public String getBill(){
+        bill+="Base Price Of The Pizza: "+this.price;
         if(sos)
-            bill+="sos price: "+sosPrice+"\n";
+            bill+="Extra Cheese Added: "+sosPrice+"\n";
         if (topping)
-            bill+="topping price: "+toppingPrice+"\n";
+            bill+="Extra Toppings Added: "+toppingPrice+"\n";
         
         if (pack)
-            bill+="pack price : "+(count*pacKageprice)+"\n";
-        bill+="Total price : "+this.getPrice()+"\n";
+            bill+="Paperbag Added: "+(count*pacKageprice)+"\n";
+        bill+="Total Price: "+this.getPrice()+"\n";
         return bill;
     }
 
