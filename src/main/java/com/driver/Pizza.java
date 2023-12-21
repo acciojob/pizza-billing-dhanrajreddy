@@ -31,10 +31,10 @@ public class Pizza {
         }
     }
 
-    public void methodPrice(){
-        if (isdeal)
-            price+=(sosPrice+toppingPrice);
-    }
+//    public void methodPrice(){
+//        if (isdeal)
+//            price+=(sosPrice+toppingPrice);
+//    }
 
     public void addTakeaway() {
         count++;
@@ -57,9 +57,6 @@ public class Pizza {
     }
 
     public String getBill() {
-        if (isdeal)
-            bill += "Base Price Of The Pizza: "+ price +"\n";
-        else
             bill += "Base Price Of The Pizza: " + this.price+ "\n";
         if (sos)
             bill += "Extra Cheese Added: " + sosPrice + "\n";
@@ -79,10 +76,10 @@ public class Pizza {
 
     public int getPriceCount() {
         int total=0;
-        if(sos && !isdeal){
+        if(sos){
            total += sosPrice;
         }
-        if(topping  && !isdeal)
+        if(topping)
             total += toppingPrice;
         if (pack)
             total += (count * pacKageprice);
