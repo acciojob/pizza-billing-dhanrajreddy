@@ -1,53 +1,85 @@
 package com.driver;
 
 public class Pizza {
-    protected int basePrice;
-    protected boolean extraCheeseAdded;
-    protected boolean toppingsAdded;
-    protected boolean paperBagAdded;
+    private int price, pacKageprice, sosPrice, toppingPrice, count;
+    private boolean isVej, pack, sos, topping;
+    private String bill;
+    boolean isdeal;
 
-    public Pizza(int basePrice) {
-        this.basePrice = basePrice;
-        this.extraCheeseAdded = false;
-        this.toppingsAdded = false;
-        this.paperBagAdded = false;
+    public Pizza(boolean isVej) {
+        System.out.println("constructor called");
+        price = 0;
+        count = 0;
+        isdeal = false;
+        pack = false;
+        sos = false;
+        topping = false;
+        bill = "";
+        this.isVej = isVej;
+        if (isVej == true) {
+            price = 300;
+            pacKageprice = 20;
+            sosPrice = 80;
+            toppingPrice = 70;
+        } else {
+            price = 400;
+            pacKageprice = 20;
+            sosPrice = 80;
+            toppingPrice = 120;
+        }
+    }
+
+    public void methodPrice(){
+        if (isdeal)
+            price+=(sosPrice+toppingPrice);
+    }
+
+    public void addTakeaway() {
+        count++;
+        pack = true;
     }
 
     public void addExtraCheese() {
-        if (!extraCheeseAdded) {
-            // Add extra cheese only if not added before
-            this.basePrice += 80;
-            this.extraCheeseAdded = true;
+        sos = true;
+
+    }
+
+    public void addExtraToppings() {
+        topping = true;
+
+    }
+
+    public void delPizzaCall() {
+        sos = true;
+        topping = true;
+    }
+
+    public String getBill() {
+        if (isdeal)
+            bill += "Base Price Of The Pizza: "+ price +"\n";
+        else
+            bill += "Base Price Of The Pizza: " + this.price+ "\n";
+        if (sos)
+            bill += "Extra Cheese Added: " + sosPrice + "\n";
+        if (topping)
+            bill += "Extra Toppings Added: " + toppingPrice + "\n";
+
+        if (pack)
+            bill += "Paperbag Added: " + (count * pacKageprice) + "\n";
+        bill += "Total Price: " + this.getPrice() + "\n";
+        return bill;
+    }
+
+
+    public int getPrice() {
+        int total=0;
+        if(sos && !isdeal){
+           total += sosPrice;
         }
-    }
-
-    public void addToppings(int price) {
-        if (!toppingsAdded) {
-            // Add toppings only if not added before
-            this.basePrice += price;
-            this.toppingsAdded = true;
-        }
-    }
-
-    public void addPaperBag() {
-        if (!paperBagAdded) {
-            this.basePrice += 20;
-            this.paperBagAdded = true;
-        }
-    }
-
-    public int calculateTotal() {
-        return this.basePrice;
-    }
-
-    public String generateBill() {
-        // Generate bill with itemized details
-        StringBuilder bill = new StringBuilder();
-        bill.append("Base Price Of The Pizza: ").append(this.basePrice).append("\n");
-        if (extraCheeseAdded) bill.append("Extra Cheese Added: 80\n");
-        if (toppingsAdded) bill.append("Extra Toppings Added: ").append(this.basePrice - (extraCheeseAdded ? 80 : 0)).append("\n");
-        if (paperBagAdded) bill.append("Paperbag Added: 20\n");
-        bill.append("Total Price: ").append(calculateTotal()).append("\n");
-        return bill.toString();
+        if(topping  && !isdeal)
+            total += toppingPrice;
+        if (pack)
+            total += (count * pacKageprice);
+        return price+total;
     }
 }
