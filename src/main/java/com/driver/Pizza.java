@@ -28,21 +28,21 @@ public class Pizza {
         // your code goes here
         if (!cheese){
             cheese= true;
-            price+=cheesPrice;
+          //  price+=cheesPrice;
         }
     }
     public void addExtraToppings(){
         // your code goes here
         if (!topping){
             topping= true;
-            price+=toppingPrice;
+          //  price+=toppingPrice;
         }
     }
     public void addTakeaway(){
         // your code goes here
         if (!takeAway){
             takeAway=true;
-            price+=takeAwayPrice;
+           // price+=takeAwayPrice;
         }
 
     }
@@ -58,7 +58,7 @@ public class Pizza {
 
             if (takeAway)
                 bill += "Paperbag Added: " + (takeAwayPrice) + "\n";
-            bill += "Total Price: " +price +"\n";
+            bill += "Total Price: " +getPrice() +"\n";
             isBill=true;
             return bill;
         }
@@ -66,7 +66,14 @@ public class Pizza {
     }
 
     public int getPrice()  {
-        return price;
+        int total=0;
+        if(cheese)
+            total+=cheesPrice;
+        if(topping)
+            total+=toppingPrice;
+        if(takeAway)
+            total+=takeAwayPrice;
+        return price+total;
     }
 }
 
