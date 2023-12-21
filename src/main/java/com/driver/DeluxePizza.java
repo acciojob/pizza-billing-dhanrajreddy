@@ -6,7 +6,7 @@ public class DeluxePizza extends Pizza {
         super(isVej);
         addExtraCheese();
         addExtraToppings();
-        getBill();
+        System.out.println(getBill());
     }
 }
 
