@@ -1,5 +1,7 @@
 package com.driver;
 
+import java.net.StandardSocketOptions;
+
 public class Pizza {
     private int price, pacKageprice, sosPrice, toppingPrice, count;
     private boolean isVej, pack, sos, topping;
@@ -59,19 +61,23 @@ public class Pizza {
             bill += "Base Price Of The Pizza: "+ price +"\n";
         else
             bill += "Base Price Of The Pizza: " + this.price+ "\n";
-        if (sos)
+        if (sos && !isdeal)
             bill += "Extra Cheese Added: " + sosPrice + "\n";
-        if (topping)
+        if (topping && !isdeal)
             bill += "Extra Toppings Added: " + toppingPrice + "\n";
 
         if (pack)
             bill += "Paperbag Added: " + (count * pacKageprice) + "\n";
-        bill += "Total Price: " + this.getPrice() + "\n";
+        bill += "Total Price: " + this.getPriceCount() + "\n";
         return bill;
     }
 
+    public int getPrice(){
+        System.out.print("Base Price Of The Pizza: ");
+        return price;
+    }
 
-    public int getPrice() {
+    public int getPriceCount() {
         int total=0;
         if(sos && !isdeal){
            total += sosPrice;
