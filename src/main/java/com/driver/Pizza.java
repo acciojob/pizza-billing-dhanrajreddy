@@ -82,7 +82,7 @@ public class Pizza {
         if(topping)
             total += toppingPrice;
         if (pack)
-            total += (count * pacKageprice);
+            total += (pacKageprice);
         return price+total;
     }
 }
