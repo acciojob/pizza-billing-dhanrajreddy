@@ -9,7 +9,6 @@ public class Pizza {
     boolean isdeal;
 
     public Pizza(boolean isVej) {
-        System.out.println("constructor called");
         price = 0;
         count = 0;
         isdeal = false;
