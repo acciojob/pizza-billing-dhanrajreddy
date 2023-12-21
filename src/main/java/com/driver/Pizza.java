@@ -61,9 +61,9 @@ public class Pizza {
             bill += "Base Price Of The Pizza: "+ price +"\n";
         else
             bill += "Base Price Of The Pizza: " + this.price+ "\n";
-        if (sos && !isdeal)
+        if (sos)
             bill += "Extra Cheese Added: " + sosPrice + "\n";
-        if (topping && !isdeal)
+        if (topping)
             bill += "Extra Toppings Added: " + toppingPrice + "\n";
 
         if (pack)
