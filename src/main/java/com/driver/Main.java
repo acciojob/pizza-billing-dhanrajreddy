@@ -16,24 +16,16 @@ public class Main {
 //    System.out.println(p.getBill());
 
       Pizza p1 = new Pizza(true);
-      p1.addExtraToppings();
-      p1.addExtraCheese();
-      p1.addTakeaway();
-      p1.addTakeaway();
-      p1.addExtraToppings();
-System.out.println(p1.getPrice());//300
+      System.out.println(p1.getBill());//300
+
 //      p1.addExtraToppings();//370
 //      System.out.println(p1.getPrice());//370
 //      p1.addTakeaway();//390
 //      p1.addExtraCheese();//470
 //      System.out.println(p1.getPrice());//470
-
-
-    DeluxePizza dp1 = new DeluxePizza(true);
-    //System.out.println("deluxPrice"+dp1.getPrice());
-    System.out.println(dp1.getBill());
-
-
-
+//
+//    DeluxePizza dp1 = new DeluxePizza(true);
+//    //System.out.println("deluxPrice"+dp1.getPrice());
+//    System.out.println(dp1.getBill());
   }
 }
