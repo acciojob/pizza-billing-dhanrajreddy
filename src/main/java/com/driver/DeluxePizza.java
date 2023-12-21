@@ -2,7 +2,7 @@ package com.driver;
 
 public class DeluxePizza extends Pizza {
 
-    public DeluxePizza(Boolean isVej){
+    public DeluxePizza(boolean isVej){
         super(isVej);
         addExtraCheese();
         addExtraToppings();
