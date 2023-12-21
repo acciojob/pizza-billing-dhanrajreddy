@@ -26,25 +26,15 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        if (!cheese){
             cheese= true;
-          //  price+=cheesPrice;
-        }
     }
     public void addExtraToppings(){
         // your code goes here
-        if (!topping){
             topping= true;
-          //  price+=toppingPrice;
-        }
     }
     public void addTakeaway(){
         // your code goes here
-        if (!takeAway){
             takeAway=true;
-           // price+=takeAwayPrice;
-        }
-
     }
 
 
