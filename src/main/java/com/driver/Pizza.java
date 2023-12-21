@@ -1,87 +1,85 @@
 package com.driver;
 
-import java.net.StandardSocketOptions;
-
 public class Pizza {
-    private int price, pacKageprice, sosPrice, toppingPrice, count;
-    private boolean isVej, pack, sos, topping;
+
+    private int price;
+    private Boolean isVeg;
     private String bill;
-    boolean isdeal;
+    private int vegBasePrice = 300, nonvageBasePrice = 400;
+    private int extraCheesePrice = 80;
+    private int toppingVegPizza = 70, toppingNonVegPizza = 120;
+    private int paperBag = 20;
 
-    public Pizza(boolean isVej) {
-        price = 0;
-        count = 0;
-        isdeal = false;
-        pack = false;
-        sos = false;
-        topping = false;
-        bill = "";
-        this.isVej = isVej;
-        if (isVej == true) {
-            price = 300;
-            pacKageprice = 20;
-            sosPrice = 80;
-            toppingPrice = 70;
-        } else {
-            price = 400;
-            pacKageprice = 20;
-            sosPrice = 80;
-            toppingPrice = 120;
-        }
+    private int basePrice;
+    private int toppingPrice;
+
+    private boolean isCheeseAdded;
+    private boolean isExtraTopping;
+    private boolean isTakeAway;
+
+
+    public Pizza(Boolean isVeg){
+        this.isVeg = isVeg;
+        // your code goes here
+        basePrice = getBasePrice();
+        price = basePrice;
     }
 
-//    public void methodPrice(){
-//        if (isdeal)
-//            price+=(sosPrice+toppingPrice);
-//    }
-
-    public void addTakeaway() {
-        count++;
-        pack = true;
-    }
-
-    public void addExtraCheese() {
-        sos = true;
-
-    }
-
-    public void addExtraToppings() {
-        topping = true;
-
-    }
-
-    public void delPizzaCall() {
-        sos = true;
-        topping = true;
-    }
-
-    public String getBill() {
-            bill += "Base Price Of The Pizza: " + this.price+ "\n";
-        if (sos)
-            bill += "Extra Cheese Added: " + sosPrice + "\n";
-        if (topping)
-            bill += "Extra Toppings Added: " + toppingPrice + "\n";
-
-        if (pack)
-            bill += "Paperbag Added: " + (pacKageprice) + "\n";
-        bill += "Total Price: " + this.getPriceCount() + "\n";
-        return bill;
+    public int getBasePrice(){
+        return isVeg ? vegBasePrice : nonvageBasePrice;
     }
 
     public int getPrice(){
-        System.out.print("Base Price Of The Pizza: ");
-        return price;
+        return this.price;
     }
 
-    public int getPriceCount() {
-        int total=0;
-        if(sos){
-           total += sosPrice;
+    public void addExtraCheese(){
+        // your code goes here
+        if (isCheeseAdded == false) {
+            isCheeseAdded = true;
+            price += extraCheesePrice;
         }
-        if(topping)
-            total += toppingPrice;
-        if (pack)
-            total += (pacKageprice);
-        return price+total;
+    }
+
+    public void addExtraToppings(){
+        // your code goes here
+        if (isExtraTopping == false) {
+            isExtraTopping = true;
+            if (isVeg) {
+                toppingPrice = toppingVegPizza;
+                price += toppingPrice;
+            } else {
+                toppingPrice = toppingNonVegPizza;
+                price += toppingPrice;
+            }
+        }
+
+    }
+
+    public void addTakeaway(){
+        // your code goes here
+        if (isTakeAway == false) {
+            isTakeAway = true;
+            price += paperBag;
+        }
+    }
+
+    public String getBill(){
+        // your code goes here
+        String str = "";
+        str += "Base Price Of The Pizza: " + basePrice + "\n";
+        if (isCheeseAdded) {
+            str += "Extra Cheese Added: " + extraCheesePrice + "\n";
+        }
+        if (isExtraTopping) {
+            str += "Extra Toppings Added: " + toppingPrice + "\n";
+        }
+        if (isTakeAway) {
+            str += "Paperbag Added: " + paperBag + "\n";
+        }
+        str += "Total Price: " + price + "\n";
+        this.bill = str;
+
+        return this.bill;
     }
 }
