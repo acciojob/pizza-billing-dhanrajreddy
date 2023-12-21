@@ -64,7 +64,7 @@ public class Pizza {
             bill += "Extra Toppings Added: " + toppingPrice + "\n";
 
         if (pack)
-            bill += "Paperbag Added: " + (count * pacKageprice) + "\n";
+            bill += "Paperbag Added: " + (pacKageprice) + "\n";
         bill += "Total Price: " + this.getPriceCount() + "\n";
         return bill;
     }
