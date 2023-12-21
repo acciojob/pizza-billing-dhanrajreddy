@@ -2,13 +2,13 @@ package com.driver;
 import java.net.StandardSocketOptions;
 public class Pizza {
     private int price, takeAwayPrice, cheesPrice, toppingPrice;
-    private boolean isVej, pack, chees, topping;
+    private boolean isVeg, takeAway, cheese, topping;
     private String bill;
 
 
-    public Pizza(boolean isVej) {
+    public Pizza(boolean isVeg) {
         bill="";
-        if (isVej) {
+        if (isVeg) {
             price = 300;
             takeAwayPrice = 20;
             cheesPrice = 80;
@@ -20,26 +20,34 @@ public class Pizza {
             toppingPrice = 120;
         }
     }
-    public void addTakeaway() {
-        pack = true;
-    }
-    public void addExtraCheese() {
-        chees = true;
 
-    }
-    public void addExtraToppings() {
-        topping = true;
 
+    public void addExtraCheese(){
+        // your code goes here
+        if (!cheese)
+            cheese= true;
     }
+    public void addExtraToppings(){
+        // your code goes here
+        if (!topping)
+            topping= true;
+    }
+
+    public void addTakeaway(){
+        // your code goes here
+        if (! takeAway)
+            takeAway= true;
+    }
+
 
     public String getBill() {
             bill += "Base Price Of The Pizza: " + this.price+ "\n";
-        if (chees)
+        if (cheese)
             bill += "Extra Cheese Added: " + cheesPrice + "\n";
         if (topping)
             bill += "Extra Toppings Added: " + toppingPrice + "\n";
 
-        if (pack)
+        if (takeAway)
             bill += "Paperbag Added: " + (takeAwayPrice) + "\n";
         bill += "Total Price: " + this.getPrice() + "\n";
         return bill;
@@ -47,12 +55,12 @@ public class Pizza {
 
     public int getPrice()  {
         int total=0;
-        if(chees){
+        if(cheese){
            total += cheesPrice;
         }
         if(topping)
             total += toppingPrice;
-        if (pack)
+        if (takeAway)
             total += (takeAwayPrice);
         return price+total;
     }
