@@ -2,11 +2,11 @@ package com.driver;
 import java.net.StandardSocketOptions;
 public class Pizza {
     private int price, takeAwayPrice, cheesPrice, toppingPrice,basePrice;
-    private boolean isVeg, takeAway, cheese, topping;
+    private boolean  takeAway, cheese, topping;
     private String bill;
 
 
-    public Pizza(boolean isVeg) {
+    public Pizza(Boolean isVeg) {
         bill="";
         if (isVeg) {
             price = 300;
