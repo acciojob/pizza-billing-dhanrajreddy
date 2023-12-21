@@ -15,13 +15,18 @@ public class Main {
     p.addTakeaway();
     System.out.println(p.getBill());
 
-//    Pizza p1 = new Pizza(true);
+//      Pizza p1 = new Pizza(true);
 //      System.out.println(p1.getPrice());//300
-//      p1.addExtraToppings();
+//      p1.addExtraToppings();//370
 //      System.out.println(p1.getPrice());//370
-//      p1.addTakeaway();
-//      p1.addExtraCheese();
-//      System.out.println(p1.getPrice());//450
+//      p1.addTakeaway();//390
+//      p1.addExtraCheese();//470
+//      System.out.println(p1.getPrice());//470
+//
+//
+//    DeluxePizza dp1 = new DeluxePizza(true);
+//    //System.out.println("deluxPrice"+dp1.getPrice());
+//    System.out.println(dp1.getBill());
 
 
 
