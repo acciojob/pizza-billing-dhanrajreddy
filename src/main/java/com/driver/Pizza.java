@@ -2,7 +2,7 @@ package com.driver;
 import java.net.StandardSocketOptions;
 public class Pizza {
     private int price, takeAwayPrice, cheesPrice, toppingPrice,basePrice;
-    private boolean  takeAway, cheese, topping;
+    private boolean  takeAway, cheese, topping,isBill;
     private String bill;
 
 
@@ -49,15 +49,19 @@ public class Pizza {
 
 
     public String getBill() {
+        if(!isBill){
             bill += "Base Price Of The Pizza: " + this.basePrice+ "\n";
-        if (cheese)
-            bill += "Extra Cheese Added: " + cheesPrice + "\n";
-        if (topping)
-            bill += "Extra Toppings Added: " + toppingPrice + "\n";
+            if (cheese)
+                bill += "Extra Cheese Added: " + cheesPrice + "\n";
+            if (topping)
+                bill += "Extra Toppings Added: " + toppingPrice + "\n";
 
-        if (takeAway)
-            bill += "Paperbag Added: " + (takeAwayPrice) + "\n";
-        bill += "Total Price: " +price +"\n";
+            if (takeAway)
+                bill += "Paperbag Added: " + (takeAwayPrice) + "\n";
+            bill += "Total Price: " +price +"\n";
+            isBill=true;
+            return bill;
+        }
         return bill;
     }
 
